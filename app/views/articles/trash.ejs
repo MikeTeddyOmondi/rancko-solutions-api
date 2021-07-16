@@ -1,0 +1,46 @@
+<div class="container">
+    <div>
+        <h1 class="mb-4" style="display:inline-block;">Trash</h1>
+    </div>
+    <% if(articles) { %>
+        <% articles.forEach(article => { %>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <%= article.title %>
+                    </h4>
+                    <div class="card-subtitle text-muted mb-2">
+                        <%= article.createdAt.toLocaleDateString() %>
+                    </div>
+                    <div class="card-text mb-2">
+                        <%= article.description %>
+                    </div>
+                    <a href="/articles/<%= article.slug%>" class="btn btn-primary" style="float: left;">Read more</a>
+                    <!-- <a href="/articles/edit/<%= article.id%>" class="btn btn-info">Edit</a> -->
+                    <form action="/articles/restore/<%= article.id %>?_method=POST" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-warning" style="margin-left: 3px;">Restore</button>
+                    </form>
+                    <form action="/articles/delete/<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger" style="float: right;">Delete Permanently</button>
+                    </form>
+                </div>
+            </div>
+            <% }) %>
+                <% } %>
+                    <% if(articles.length === 0){ %>
+                        <div class="card mt-4">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    Oops! There's nothing here...
+                                </h4>
+                                <div class="card-subtitle text-muted mb-2">
+
+                                </div>
+                                <div class="card-text mb-2">
+                                    Trash can is empty...
+                                </div>
+                                <a href="/articles/posts" class="btn btn-primary" style="float: left;">Go Back</a>
+                            </div>
+                        </div>
+                        <% } %>
+</div>

@@ -1,0 +1,13 @@
+<div class="container">
+    <h1 class="mb-4">
+        <%= article.title %>
+    </h1>
+    <div class="text-muted mb-2">
+        <%= article.createdAt.toLocaleDateString() %>
+    </div>
+    <a href="/articles/posts" class="btn btn-secondary">All Posts</a>
+    <a href="/articles/edit/<%= article.id%>" class="btn btn-info" style="float: right;">Edit Post</a>
+    <div class="mt-5">
+        <%- article.sanitizedHtml%>
+    </div>
+</div>
