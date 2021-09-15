@@ -1,3 +1,4 @@
+const path = require("path");
 const Transporter = require("nodemailer");
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
@@ -70,7 +71,7 @@ async function sendMail(mail_body) {
 			to: recipientMail,
 			subject: "New Notification | Rancko Solutions LLC.",
 			text: `Hi, ${message_body}`,
-			html: `<h5>Hi, ${message_body}</h5>`,
+			html: `Hi, ${message_body}`,
 		};
 
 		const emailSent = await transporter.sendMail(mailOptions);
@@ -101,7 +102,9 @@ async function autoContactMail(mail_body) {
 
 		const body = `
             <h5>Hi ${mail_body.firstname},</h5>
-            <p>Thank you for contacting us. Your inquiry message has truly been received. You will receive more feedback as soon as your email is addressed.</p>
+            <p>Thank you for contacting us. Your inquiry message has truly been received.</p>
+			<p>Please find the attached questionnaire and fill it with all the information required.</p>
+			<p>You will receive the agreement and the full quotation as soon as you email us a scanned copy of your fully-filled response.</p>
             <br>
             <p>Regards,</p>
             <h5>Mike Teddy Omondi - CEO & Founder</h5>
@@ -128,7 +131,18 @@ async function autoContactMail(mail_body) {
 			to: recipientMail,
 			subject: "Thanks for Contacting | Rancko Solutions LLC.",
 			text: `${message_body}`,
-			html: `<h5>${message_body}</h5>`,
+			html: `${message_body}`,
+			attachments: [
+				{
+					filename:
+						"Client_Questionnaire-Web_Design_Development-Rancko_Solutions_LLC.pdf",
+					path: path.join(
+						__dirname,
+						"../downloads/documents/Client_Questionnaire-Web_Design_Development-Rancko_Solutions_LLC.pdf",
+					),
+					contentType: "application/pdf",
+				},
+			],
 		};
 
 		const emailSent = await transporter.sendMail(mailOptions);
@@ -188,7 +202,7 @@ async function autoSubscribeMail(mail_body) {
 			to: recipientMail,
 			subject: "Thanks for Subscribing | Rancko Solutions LLC.",
 			text: `${message_body}`,
-			html: `<h5>${message_body}</h5>`,
+			html: `${message_body}`,
 		};
 
 		const emailSent = await transporter.sendMail(mailOptions);
@@ -198,7 +212,7 @@ async function autoSubscribeMail(mail_body) {
 	}
 }
 
-// Send email to Subscribing User's inbox
+// Send email to Unsubscribing User's inbox
 async function unSubscribeMail(mail_body) {
 	try {
 		const oAuth2Client = new OAuth2(
@@ -248,7 +262,7 @@ async function unSubscribeMail(mail_body) {
 			to: recipientMail,
 			subject: "Unsubscribing from Newsletters | Rancko Solutions LLC.",
 			text: `${message_body}`,
-			html: `<h5>${message_body}</h5>`,
+			html: `${message_body}`,
 		};
 
 		const emailSent = await transporter.sendMail(mailOptions);
