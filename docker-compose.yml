@@ -1,0 +1,44 @@
+version: "3.6"
+
+services:
+  rancko-solutions-api:
+    container_name: rancko-solutions-api
+    image: ranckosolutionsinc/rancko-solutions-api:v1.0
+    # build: ./
+    restart: always
+    ports:
+      - 5000:5000
+    environment:
+      - PORT=${PORT}
+      - NODE_ENV=${NODE_ENV}
+      - MONGODB_REMOTE_URI=${MONGODB_REMOTE_URI}
+    volumes:
+      - rancko-solutions-public-folder:/app/public:ro
+      - rancko-solutions-app-folder:/app/app:ro  
+    # networks:
+    #   - rancko-solutions-api-network
+    # depends_on:
+    #   - mongo
+
+#   mongo:
+#     container_name: rancko-solutions-api-db
+#     image: mongo:6.0.3
+#     restart: always
+#     ports:
+#       - 27017:27017
+#     # environment:
+#     #   - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+#     #   - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+#     volumes:
+#       - rancko-solutions-api-db-data:/data/db
+#     networks:
+#       - rancko-solutions-api-network
+
+# volumes:
+#   rancko-solutions-public-folder:
+#   rancko-solutions-app-folder:
+
+# networks:
+#   rancko-solutions-api-network:
+#     name: rancko-solutions-api
+#     driver: bridge
