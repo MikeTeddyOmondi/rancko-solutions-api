@@ -1,184 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title><%- title %> | Rancko Solutions LLC</title>
-		<meta charset="utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, shrink-to-fit=no"
-		/>
-		<link
-			href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900"
-			rel="stylesheet"
-		/>
-		<link
-			rel="stylesheet"
-			href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-		/>
-		<link rel="stylesheet" href="../../css/style.css" />
-		<!-- Font Awesome -->
-		<link
-			rel="stylesheet"
-			href="../../plugins/fontawesome-free/css/all.min.css"
-		/>
-		<!-- Theme style -->
-		<link rel="stylesheet" href="../../dist/css/adminlte.min.css" />
-		<!-- Summernote | MailBox Text Editor -->
-		<link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.css" />
-	</head>
+  <head>
+    <title><%- title %> | Rancko Solutions LLC</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="../../plugins/fontawesome-free/css/all.min.css"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css" />
+    <!-- Summernote | MailBox Text Editor -->
+    <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.css" />
+  </head>
 
-	<body>
-		<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar" class="active">
-				<h1><a href="index.html" class="logo">M.</a></h1>
-				<ul class="list-unstyled components mb-5">
-					<li class="active">
-						<a href="/dashboard"><span class="fa fa-home"></span> Dashboard</a>
-					</li>
-					<li>
-						<a href="/profile"><span class="fa fa-user"></span> My Profile</a>
-					</li>
-					<li>
-						<a href="/messages"
-							><span class="fa fa-paper-plane"></span> Messages</a
-						>
-					</li>
-					<li>
-						<a href="/articles/posts"
-							><span class="fa fa-sticky-note"></span>Drafts</a
-						>
-					</li>
-					<li>
-						<a href="/articles/published"
-							><span class="fa fa-sticky-note"></span>Published</a
-						>
-					</li>
-					<li>
-						<a href="/settings"><span class="fa fa-cogs"></span> Settings</a>
-					</li>
-					<li>
-						<a href="/articles/trash"><span class="fa fa-trash"></span>Trash</a>
-					</li>
-				</ul>
-				<div class="footer">
-					<p>
-						Copyright &copy;
-						<script>
-							document.write(new Date().getFullYear());
-						</script>
-						All rights reserved | This template is designed with
-						<i class="icon-heart" aria-hidden="true"></i> by
-						<a href="#" target="_blank">Rancko Solutions LLC</a>
-					</p>
-				</div>
-			</nav>
+  <body>
+    <div class="wrapper d-flex align-items-stretch">
+      <nav id="sidebar" class="active">
+        <!-- <h1><a href="index.html" class="logo">M.</a></h1> -->
+        <a href="/" class="logo"
+          ><img
+            id="logo"
+            src="/img/icon-128x128.png"
+            alt="Logo"
+            width="128"
+            height="128"
+          />
+        </a>
+        <ul class="list-unstyled components mb-5">
+          <li class="active">
+            <a href="/dashboard"><span class="fa fa-home"></span> Dashboard</a>
+          </li>
+          <li>
+            <a href="/profile"><span class="fa fa-user"></span> My Profile</a>
+          </li>
+          <li>
+            <a href="/messages"
+              ><span class="fa fa-paper-plane"></span> Messages</a
+            >
+          </li>
+          <li>
+            <a href="/articles/posts"
+              ><span class="fa fa-sticky-note"></span>Drafts</a
+            >
+          </li>
+          <li>
+            <a href="/articles/published"
+              ><span class="fa fa-sticky-note"></span>Published</a
+            >
+          </li>
+          <li>
+            <a href="/settings"><span class="fa fa-cogs"></span> Settings</a>
+          </li>
+          <li>
+            <a href="/articles/trash"><span class="fa fa-trash"></span>Trash</a>
+          </li>
+        </ul>
+        <div class="footer">
+          <p>
+            Copyright &copy;
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            All rights reserved | This template is designed with
+            <i class="icon-heart" aria-hidden="true"></i> by
+            <a href="#" target="_blank">Rancko Solutions LLC</a>
+          </p>
+        </div>
+      </nav>
 
-			<div id="content" class="p-4 p-md-5">
-				<%- include ('../partials/messages'); %>
-				<nav class="navbar navbar-expand-lg navbar-light bg-light">
-					<div class="container-fluid">
-						<button
-							type="button"
-							id="sidebarCollapse"
-							class="btn btn-secondary"
-						>
-							<i class="fa fa-bars"></i>
-							<span class="sr-only">Toggle Menu</span>
-						</button>
-						<button
-							class="btn btn-dark d-inline-block d-lg-none ml-auto"
-							type="button"
-							data-toggle="collapse"
-							data-target="#navbarSupportedContent"
-							aria-controls="navbarSupportedContent"
-							aria-expanded="false"
-							aria-label="Toggle navigation"
-						>
-							<i class="fa fa-bars"></i>
-						</button>
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="nav navbar-nav ml-auto">
-								<li class="nav-item">
-									<a class="nav-link active" href="/articles/new"
-										>New Article</a
-									>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="/articles/posts">Drafts</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="/notifications">Notifications</a>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="/users/logout"
-										data-toggle="modal"
-										data-target="#logoutModal"
-										>Logout</a
-									>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</nav>
-				<!-- Body | Templates -->
-				<%- body %>
-			</div>
-		</div>
-		<!-- Logout Modal-->
-		<div
-			class="modal fade"
-			id="logoutModal"
-			tabindex="-1"
-			role="dialog"
-			aria-labelledby="exampleModalLabel"
-			aria-hidden="true"
-		>
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Logout?</h5>
-						<button
-							class="close"
-							type="button"
-							data-dismiss="modal"
-							aria-label="Close"
-						>
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<%= user.name %> are you sure you want to end your current session?
-					</div>
-					<div class="modal-footer">
-						<button
-							class="btn btn-secondary"
-							type="button"
-							data-dismiss="modal"
-						>
-							Cancel
-						</button>
-						<a class="btn btn-warning" href="/users/logout">Logout</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- CKEditor4 -->
-		<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
-		<script>
-			CKEDITOR.replace("markdown");
-		</script>
-		<!-- Javascript | Files -->
-		<script src="../../js/Chart.min.js"></script>
-		<script src="../../js/jquery.min.js"></script>
-		<script src="../../js/popper.js"></script>
-		<script src="../../js/bootstrap.min.js"></script>
-		<script src="../../js/main.js"></script>
-		<script src="../../js/scripts.js"></script>
-		<!-- AdminLTE Theme -->
-		<script src="../../dist/js/adminlte.min.js"></script>
-		<!-- Summernote -->
-		<script src="../../plugins/summernote/summernote-bs4.min.js"></script>
-	</body>
+      <div id="content" class="p-4 p-md-5">
+        <%- include ('../partials/messages'); %>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <button
+              type="button"
+              id="sidebarCollapse"
+              class="btn btn-secondary"
+            >
+              <i class="fa fa-bars"></i>
+              <span class="sr-only">Toggle Menu</span>
+            </button>
+            <button
+              class="btn btn-dark d-inline-block d-lg-none ml-auto"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link active" href="/articles/new"
+                    >New Article</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/articles/posts">Drafts</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/notifications">Notifications</a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="/users/logout"
+                    data-toggle="modal"
+                    data-target="#logoutModal"
+                    >Logout</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <!-- Body | Templates -->
+        <%- body %>
+      </div>
+    </div>
+    <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Logout?</h5>
+            <button
+              class="close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= user.name %> are you sure you want to end your current session?
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <a class="btn btn-warning" href="/users/logout">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- CKEditor4 -->
+    <!-- <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script> -->
+    <script src="../../plugins/ckeditor/37_0_1/ckeditor.js"></script>
+    <script>
+      // CKEDITOR.replace("markdown");
+      ClassicEditor.create(document.querySelector("#markdown"), {
+        // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+      })
+        .then((editor) => {
+          window.editor = editor;
+        })
+        .catch((err) => {
+          console.error(err.stack);
+        });
+    </script>
+    <!-- Javascript | Files -->
+    <script src="../../js/Chart.min.js"></script>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/popper.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/scripts.js"></script>
+    <!-- AdminLTE Theme -->
+    <script src="../../dist/js/adminlte.min.js"></script>
+    <!-- Summernote -->
+    <script src="../../plugins/summernote/summernote-bs4.min.js"></script>
+  </body>
 </html>

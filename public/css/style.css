@@ -11078,11 +11078,16 @@ h5,
 #sidebar .logo {
     display: block;
     color: #fff;
-    font-weight: 900;
     padding: 10px 30px;
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
+}
+
+#sidebar img#logo {
+    height: 4.8rem;
+    width: 4.8rem;
+    padding: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -11155,6 +11160,12 @@ h5,
     }
     #sidebar.active {
         margin-left: 0 !important;
+    }
+
+    #sidebar img#logo {
+        height: 3.6rem;
+        width: 3.6rem;
+        padding: 2px;
     }
 }
 
