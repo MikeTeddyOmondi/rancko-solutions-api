@@ -23,7 +23,7 @@
     "jsdom": "^16.5.0",
     "marked": "^4.2.5",
     "method-override": "^3.0.0",
-    "mongoose": "^5.11.15",
+    "mongoose": "^5.13.20",
     "nodemailer": "^6.5.0",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
