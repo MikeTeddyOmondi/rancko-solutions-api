@@ -39,8 +39,8 @@ services:
 #       - rancko-solutions-api-network
 
 volumes:
-  rancko-solutions-public-folder:
-  rancko-solutions-app-folder:
+  rancko-solutions-public-assets:
+  rancko-solutions-app-dir:
 
 # networks:
 #   rancko-solutions-api-network:
