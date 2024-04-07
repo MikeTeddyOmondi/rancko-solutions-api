@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const flash = require("connect-flash");
-const session = require("express-session");
+const session = require("cookie-session");
 const favicon = require("serve-favicon");
 const methodOverride = require("method-override");
 const expressLayouts = require("express-ejs-layouts");
@@ -28,35 +28,34 @@ app.use(favicon(path.join(__dirname, "public", "img", "favicon.ico")));
 require("./app/config/passport")(passport);
 
 // DB Config
-const db = require("./app/config/db").mongoURI;
-
-// Connect to MongoDB
-mongoose
-	.connect(db, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useCreateIndex: true,
-	})
-	.then(() => {
-		console.log("_________________________________________"),
-			console.log("Database server connection initiated..."),
-			console.log("_________________________________________"),
-			console.log("Database server connection success!"),
-			console.log("_________________________________________");
-	})
-	.catch((err) => console.log(err));
+const db = require("./app/config/config").mongoURI;
 
 // Express body parser | Url-Encoded
 app.use(express.urlencoded({ extended: false }));
 
 // Express session
 app.use(
-	session({
-		secret: crypto.randomBytes(32).toString("hex"),
-		resave: false,
-		saveUninitialized: true,
-	}),
+  session({
+    secret: crypto.randomBytes(32).toString("hex"),
+    resave: false,
+    saveUninitialized: true,
+  })
 );
+
+// register regenerate & save after the cookieSession middleware initialization
+app.use(function(request, response, next) {
+    if (request.session && !request.session.regenerate) {
+        request.session.regenerate = (cb) => {
+            cb()
+        }
+    }
+    if (request.session && !request.session.save) {
+        request.session.save = (cb) => {
+            cb()
+        }
+    }
+    next()
+})
 
 // Connect flash
 app.use(flash());
@@ -74,10 +73,10 @@ app.set("layout", "layouts/mainLayout");
 
 // Global variables
 app.use(function (req, res, next) {
-	res.locals.success_msg = req.flash("success_msg");
-	res.locals.error_msg = req.flash("error_msg");
-	res.locals.error = req.flash("error");
-	next();
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+  next();
 });
 
 // Routes
@@ -88,13 +87,28 @@ app.use("/articles", articleRouter);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, (err) => {
-	if (!err) {
-		console.log(`_________________________________________`);
-		console.log(`Backend services initiated on port: ${PORT}`);
-	} else {
-		console.log(`___________________________________________________________`);
-		console.log(`Error occured while starting the application server: ${err}`);
-		console.log(`___________________________________________________________`);
-	}
-});
+// Connect to MongoDB
+mongoose
+  .connect(db)
+  .then(() => {
+    console.log("_________________________________________");
+    console.log("Database server connection initiated...");
+    console.log("_________________________________________");
+    console.log("Database server connection success!");
+  })
+  .then(() => {
+    app.listen(PORT, (err) => {
+      if (!err) {
+        console.log(`_________________________________________`);
+        console.log(`Backend services initiated on port: ${PORT}`);
+        console.log("_________________________________________");
+      } else throw err;
+    });
+  })
+  .catch((err) => {
+    {
+      console.log(`_________________________________________`);
+      console.log(`Error occured while starting application server: ${err}`);
+      console.log(`_________________________________________`);
+    }
+  });

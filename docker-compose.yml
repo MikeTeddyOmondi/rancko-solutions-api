@@ -3,8 +3,9 @@ version: "3.6"
 services:
   rancko-solutions-api:
     container_name: rancko-solutions-api
-    image: ranckosolutionsinc/rancko-solutions-api:v1.0
-    # build: ./
+    image: ranckosolutionsinc/rancko-solutions-api:v2.0
+    # build: 
+    #   context: .
     restart: always
     ports:
       - 5000:5000
@@ -12,9 +13,12 @@ services:
       - PORT=${PORT}
       - NODE_ENV=${NODE_ENV}
       - MONGODB_REMOTE_URI=${MONGODB_REMOTE_URI}
+      - EMAIL_SENDER=${EMAIL_SENDER}
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - RECIPIENT_EMAIL=${RECIPIENT_EMAIL}
     volumes:
-      - rancko-solutions-public-folder:/app/public:ro
-      - rancko-solutions-app-folder:/app/app:ro  
+      - rancko-solutions-public-assets:/app/public:ro
+      - rancko-solutions-app-dir:/app/app:ro  
     # networks:
     #   - rancko-solutions-api-network
     # depends_on:
