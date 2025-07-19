@@ -12,7 +12,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
-    "cookie-session": "^2.1.0",
+    "cookie-session": "^2.1.1",
     "cors": "^2.8.5",
     "dompurify": "^2.2.6",
     "dotenv": "^8.2.0",
