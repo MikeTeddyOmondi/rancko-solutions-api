@@ -1,0 +1,13 @@
+### Contact Endpoint
+POST https://api.ranckosolutions.com/api/v1/contacts
+Content-Type: application/json
+
+{
+    "firstname": "Stella",
+    "lastname": "Modise",
+    "email": "modisestella38@gmail.com",
+    "subject": "Personal Website ",
+    "message": "I need a personal website...\nWhat is the pricing?"
+}
+
+###

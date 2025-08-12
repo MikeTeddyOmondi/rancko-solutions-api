@@ -100,7 +100,7 @@ mongoose
     app.listen(PORT, (err) => {
       if (!err) {
         console.log(`_________________________________________`);
-        console.log(`Backend services initiated on port: ${PORT}`);
+        console.log(`Backend services initiated on port: http://localhost:${PORT}`);
         console.log("_________________________________________");
       } else throw err;
     });
